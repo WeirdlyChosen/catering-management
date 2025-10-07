@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-10-07 00:14:44.220335",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "contact",
+  "address",
+  "customer_name",
+  "phone_number",
+  "complete_address",
+  "column_break_lfpy",
+  "week_number",
+  "date_from",
+  "date_until",
+  "section_break_tueu",
+  "default_order_type",
+  "default_addon_telur",
+  "default_addon_buah",
+  "default_addon_juice",
+  "default_addon_extra_size",
+  "order_note",
+  "section_break_eiaw",
+  "items"
+ ],
+ "fields": [
+  {
+   "fieldname": "week_number",
+   "fieldtype": "Int",
+   "label": "Week #"
+  },
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "label": "Date From"
+  },
+  {
+   "fieldname": "date_until",
+   "fieldtype": "Date",
+   "label": "Date Until"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Link",
+   "label": "Contact",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "complete_address",
+   "fieldtype": "Small Text",
+   "label": "Complete Address"
+  },
+  {
+   "fieldname": "default_order_type",
+   "fieldtype": "Select",
+   "label": "Default Order Type",
+   "options": "Kids\nPersonal\nFamily\nFamily XL"
+  },
+  {
+   "default": "0",
+   "fieldname": "default_addon_buah",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "default_addon_telur",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "default_addon_juice",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "default_addon_extra_size",
+   "fieldtype": "Check",
+   "label": "Extra Size"
+  },
+  {
+   "fieldname": "order_note",
+   "fieldtype": "Small Text",
+   "label": "Order Note"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Catering Items",
+   "options": "Catering Form Item"
+  },
+  {
+   "fieldname": "column_break_lfpy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tueu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_eiaw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-07 01:26:43.580264",
+ "modified_by": "Administrator",
+ "module": "Catering Management",
+ "name": "Catering Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

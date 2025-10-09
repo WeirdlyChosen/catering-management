@@ -27,7 +27,6 @@ const waitForForm = setInterval(() => {
 
 // URL test: https://coba.homeautomator.id/weekly-catering-form?week_number=40&customer_name=Jason
 
-*/
 
 https://coba.homeautomator.id/weekly-catering-form/new?
 week_number=40&
@@ -39,3 +38,5 @@ default_addon_telur=1&
 default_addon_buah=1&
 default_addon_juice=1&
 default_addon_extra_size=1
+*/
+

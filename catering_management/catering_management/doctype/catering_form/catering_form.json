@@ -5,6 +5,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "customer_section",
   "customer",
   "contact",
   "address",
@@ -22,8 +23,53 @@
   "default_addon_juice",
   "default_addon_extra_size",
   "order_note",
-  "section_break_eiaw",
-  "items"
+  "section_break_srog",
+  "catering_form_item",
+  "section_break_senin",
+  "catering_senin",
+  "porsi_senin",
+  "jumlah_senin",
+  "column_break_mlfv",
+  "telur_senin",
+  "buah_senin",
+  "juice_senin",
+  "extra_size_senin",
+  "section_break_selasa",
+  "catering_selasa",
+  "porsi_selasa",
+  "jumlah_selasa",
+  "column_break_selasa",
+  "telur_selasa",
+  "buah_selasa",
+  "juice_selasa",
+  "extra_size_selasa",
+  "rabu_section",
+  "catering_rabu",
+  "porsi_rabu",
+  "jumlah_rabu",
+  "column_break_rabu",
+  "telur_rabu",
+  "buah_rabu",
+  "juice_rabu",
+  "extra_size_rabu",
+  "kamis_section",
+  "catering_kamis",
+  "porsi_kamis",
+  "jumlah_kamis",
+  "column_break_kamis",
+  "telur_kamis",
+  "buah_kamis",
+  "juice_kamis",
+  "extra_size_kamis",
+  "jumat_section",
+  "catering_jumat",
+  "porsi_jumat",
+  "jumlah_jumat",
+  "column_break_jumat",
+  "telur_jumat",
+  "buah_jumat",
+  "juice_jumat",
+  "extra_size_jumat"
  ],
  "fields": [
   {
@@ -70,31 +116,32 @@
    "label": "Complete Address"
   },
   {
+   "default": "Family",
    "fieldname": "default_order_type",
    "fieldtype": "Select",
    "label": "Default Order Type",
    "options": "Kids\nPersonal\nFamily\nFamily XL"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "default_addon_buah",
    "fieldtype": "Check",
    "label": "Buah"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "default_addon_telur",
    "fieldtype": "Check",
    "label": "Telur"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "default_addon_juice",
    "fieldtype": "Check",
    "label": "Juice"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "default_addon_extra_size",
    "fieldtype": "Check",
    "label": "Extra Size"
@@ -105,33 +152,289 @@
    "label": "Order Note"
   },
   {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Catering Items",
-   "options": "Catering Form Item"
-  },
-  {
    "fieldname": "column_break_lfpy",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break_tueu",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_eiaw",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Defaults"
   },
   {
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "label": "Customer Name"
+  },
+  {
+   "fieldname": "customer_section",
+   "fieldtype": "Section Break",
+   "label": "Customer"
+  },
+  {
+   "default": "1",
+   "fieldname": "catering_senin",
+   "fieldtype": "Check",
+   "label": "Catering Senin"
+  },
+  {
+   "fieldname": "porsi_senin",
+   "fieldtype": "Select",
+   "label": "Porsi",
+   "options": "\nFamily\nPersonal\nKids"
+  },
+  {
+   "fieldname": "jumlah_senin",
+   "fieldtype": "Int",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "column_break_mlfv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "telur_senin",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "buah_senin",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "juice_senin",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_size_senin",
+   "fieldtype": "Check",
+   "label": "Extra Size"
+  },
+  {
+   "fieldname": "section_break_srog",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "catering_form_item",
+   "fieldtype": "Table",
+   "label": "Detail Order",
+   "options": "Catering Form Item"
+  },
+  {
+   "fieldname": "section_break_senin",
+   "fieldtype": "Section Break",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "section_break_selasa",
+   "fieldtype": "Section Break",
+   "label": "Selasa"
+  },
+  {
+   "default": "1",
+   "fieldname": "catering_selasa",
+   "fieldtype": "Check",
+   "label": "Catering Selasa"
+  },
+  {
+   "fieldname": "porsi_selasa",
+   "fieldtype": "Select",
+   "label": "Porsi",
+   "options": "\nFamily\nPersonal\nKids"
+  },
+  {
+   "fieldname": "jumlah_selasa",
+   "fieldtype": "Int",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "column_break_selasa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "telur_selasa",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "buah_selasa",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "juice_selasa",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_size_selasa",
+   "fieldtype": "Check",
+   "label": "Extra Size"
+  },
+  {
+   "fieldname": "rabu_section",
+   "fieldtype": "Section Break",
+   "label": "Rabu"
+  },
+  {
+   "default": "1",
+   "fieldname": "catering_rabu",
+   "fieldtype": "Check",
+   "label": "Catering Rabu"
+  },
+  {
+   "fieldname": "porsi_rabu",
+   "fieldtype": "Select",
+   "label": "Porsi",
+   "options": "\nFamily\nPersonal\nKids"
+  },
+  {
+   "fieldname": "jumlah_rabu",
+   "fieldtype": "Int",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "column_break_rabu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "telur_rabu",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "buah_rabu",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "juice_rabu",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_size_rabu",
+   "fieldtype": "Check",
+   "label": "Extra Size"
+  },
+  {
+   "fieldname": "kamis_section",
+   "fieldtype": "Section Break",
+   "label": "Kamis"
+  },
+  {
+   "default": "1",
+   "fieldname": "catering_kamis",
+   "fieldtype": "Check",
+   "label": "Catering Kamis"
+  },
+  {
+   "fieldname": "porsi_kamis",
+   "fieldtype": "Select",
+   "label": "Porsi",
+   "options": "\nFamily\nPersonal\nKids"
+  },
+  {
+   "fieldname": "jumlah_kamis",
+   "fieldtype": "Int",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "column_break_kamis",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "telur_kamis",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "buah_kamis",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "juice_kamis",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_size_kamis",
+   "fieldtype": "Check",
+   "label": "Extra Size"
+  },
+  {
+   "fieldname": "jumat_section",
+   "fieldtype": "Section Break",
+   "label": "Jumat"
+  },
+  {
+   "default": "1",
+   "fieldname": "catering_jumat",
+   "fieldtype": "Check",
+   "label": "Catering Jumat"
+  },
+  {
+   "fieldname": "porsi_jumat",
+   "fieldtype": "Select",
+   "label": "Porsi",
+   "options": "\nFamily\nPersonal\nKids"
+  },
+  {
+   "fieldname": "jumlah_jumat",
+   "fieldtype": "Int",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "column_break_jumat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "telur_jumat",
+   "fieldtype": "Check",
+   "label": "Telur"
+  },
+  {
+   "default": "0",
+   "fieldname": "buah_jumat",
+   "fieldtype": "Check",
+   "label": "Buah"
+  },
+  {
+   "default": "0",
+   "fieldname": "juice_jumat",
+   "fieldtype": "Check",
+   "label": "Juice"
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_size_jumat",
+   "fieldtype": "Check",
+   "label": "Extra Size"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-07 01:26:43.580264",
+ "modified": "2025-10-28 11:21:01.837153",
  "modified_by": "Administrator",
  "module": "Catering Management",
  "name": "Catering Form",

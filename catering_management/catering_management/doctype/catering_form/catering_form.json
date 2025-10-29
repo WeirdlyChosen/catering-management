@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{customer_name}-{date_until}-{###}",
  "creation": "2025-10-07 00:14:44.220335",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -23,8 +24,6 @@
   "default_addon_juice",
   "default_addon_extra_size",
   "order_note",
-  "section_break_srog",
-  "catering_form_item",
   "section_break_senin",
   "catering_senin",
   "porsi_senin",
@@ -34,6 +33,7 @@
   "buah_senin",
   "juice_senin",
   "extra_size_senin",
+  "summary_senin",
   "section_break_selasa",
   "catering_selasa",
   "porsi_selasa",
@@ -43,6 +43,7 @@
   "buah_selasa",
   "juice_selasa",
   "extra_size_selasa",
+  "summary_selasa",
   "rabu_section",
   "catering_rabu",
   "porsi_rabu",
@@ -52,6 +53,7 @@
   "buah_rabu",
   "juice_rabu",
   "extra_size_rabu",
+  "summary_rabu",
   "kamis_section",
   "catering_kamis",
   "porsi_kamis",
@@ -61,6 +63,7 @@
   "buah_kamis",
   "juice_kamis",
   "extra_size_kamis",
+  "summary_kamis",
   "jumat_section",
   "catering_jumat",
   "porsi_jumat",
@@ -69,7 +72,8 @@
   "telur_jumat",
   "buah_jumat",
   "juice_jumat",
-  "extra_size_jumat"
+  "extra_size_jumat",
+  "summary_jumat"
  ],
  "fields": [
   {
@@ -180,7 +184,7 @@
    "fieldname": "porsi_senin",
    "fieldtype": "Select",
    "label": "Porsi",
-   "options": "\nFamily\nPersonal\nKids"
+   "options": "\nKids\nPersonal\nFamily\nFamily XL"
   },
   {
    "fieldname": "jumlah_senin",
@@ -216,16 +220,6 @@
    "label": "Extra Size"
   },
   {
-   "fieldname": "section_break_srog",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "catering_form_item",
-   "fieldtype": "Table",
-   "label": "Detail Order",
-   "options": "Catering Form Item"
-  },
-  {
    "fieldname": "section_break_senin",
    "fieldtype": "Section Break",
    "label": "Senin"
@@ -245,7 +239,7 @@
    "fieldname": "porsi_selasa",
    "fieldtype": "Select",
    "label": "Porsi",
-   "options": "\nFamily\nPersonal\nKids"
+   "options": "\nKids\nPersonal\nFamily\nFamily XL"
   },
   {
    "fieldname": "jumlah_selasa",
@@ -295,7 +289,7 @@
    "fieldname": "porsi_rabu",
    "fieldtype": "Select",
    "label": "Porsi",
-   "options": "\nFamily\nPersonal\nKids"
+   "options": "\nKids\nPersonal\nFamily\nFamily XL"
   },
   {
    "fieldname": "jumlah_rabu",
@@ -345,7 +339,7 @@
    "fieldname": "porsi_kamis",
    "fieldtype": "Select",
    "label": "Porsi",
-   "options": "\nFamily\nPersonal\nKids"
+   "options": "\nKids\nPersonal\nFamily\nFamily XL"
   },
   {
    "fieldname": "jumlah_kamis",
@@ -395,7 +389,7 @@
    "fieldname": "porsi_jumat",
    "fieldtype": "Select",
    "label": "Porsi",
-   "options": "\nFamily\nPersonal\nKids"
+   "options": "\nKids\nPersonal\nFamily\nFamily XL"
   },
   {
    "fieldname": "jumlah_jumat",
@@ -429,15 +423,45 @@
    "fieldname": "extra_size_jumat",
    "fieldtype": "Check",
    "label": "Extra Size"
+  },
+  {
+   "fieldname": "summary_senin",
+   "fieldtype": "Data",
+   "label": "Summary Senin",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summary_selasa",
+   "fieldtype": "Data",
+   "label": "Summary Selasa"
+  },
+  {
+   "fieldname": "summary_rabu",
+   "fieldtype": "Data",
+   "label": "Summary Rabu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summary_kamis",
+   "fieldtype": "Data",
+   "label": "Summary Kamis",
+   "read_only": 1
+  },
+  {
+   "fieldname": "summary_jumat",
+   "fieldtype": "Data",
+   "label": "Summary Jumat",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-10-28 11:21:01.837153",
+ "modified": "2025-10-29 10:57:48.160036",
  "modified_by": "Administrator",
  "module": "Catering Management",
  "name": "Catering Form",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

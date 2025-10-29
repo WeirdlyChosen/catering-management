@@ -19,7 +19,7 @@
  "list_columns": [],
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2025-10-28 11:23:37.132583",
+ "modified": "2025-10-28 16:43:18.975855",
  "modified_by": "Administrator",
  "module": "Catering Management",
  "name": "catering-form",
@@ -37,19 +37,6 @@
    "fieldtype": "Section Break",
    "hidden": 0,
    "label": "Customer",
-   "max_length": 0,
-   "max_value": 0,
-   "precision": "",
-   "read_only": 0,
-   "reqd": 0,
-   "show_in_filter": 0
-  },
-  {
-   "allow_read_on_all_link_options": 0,
-   "fieldname": "week_number",
-   "fieldtype": "Int",
-   "hidden": 0,
-   "label": "Week #",
    "max_length": 0,
    "max_value": 0,
    "precision": "",
@@ -93,7 +80,7 @@
    "max_value": 0,
    "precision": "",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -106,7 +93,7 @@
    "max_value": 0,
    "precision": "",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -119,7 +106,7 @@
    "max_value": 0,
    "precision": "",
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {

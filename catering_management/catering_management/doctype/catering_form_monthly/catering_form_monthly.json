@@ -1,0 +1,793 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{nama_lengkap} {tahun}-{bulan}",
+ "creation": "2025-10-31 13:01:14.633779",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bulan",
+  "tahun",
+  "nama_lengkap",
+  "sekolah",
+  "alamat__kelas",
+  "alamat_lengkap",
+  "no_whatsapp_orang_tua",
+  "section_break_mkxa",
+  "porsi",
+  "rate",
+  "jumlah",
+  "amount",
+  "note",
+  "bukti_transfer",
+  "week_1_section",
+  "senin_week1",
+  "date_senin_week1",
+  "menu_senin_week1",
+  "column_break_fzsa",
+  "selasa_week1",
+  "date_selasa_week1",
+  "menu_selasa_week1",
+  "column_break_xqnv",
+  "rabu_week1",
+  "date_rabu_week1",
+  "menu_kamis_week1",
+  "column_break_vgsk",
+  "kamis_week1",
+  "date_kamis_week1",
+  "menu_rabu_week1",
+  "column_break_kjyl",
+  "jumat_week1",
+  "date_jumat_week1",
+  "menu_jumat_week1",
+  "week_2_section",
+  "senin_week2",
+  "date_senin_week2",
+  "menu_senin_week2",
+  "column_break_fzsa2",
+  "selasa_week2",
+  "date_selasa_week2",
+  "menu_selasa_week2",
+  "column_break_xqnv2",
+  "rabu_week2",
+  "date_rabu_week2",
+  "menu_kamis_week2",
+  "column_break_vgsk2",
+  "kamis_week2",
+  "date_kamis_week2",
+  "menu_rabu_week2",
+  "column_break_kjyl2",
+  "jumat_week2",
+  "date_jumat_week2",
+  "menu_jumat_week2",
+  "week_3_section",
+  "senin_week3",
+  "date_senin_week3",
+  "menu_senin_week3",
+  "column_break_fzsa3",
+  "selasa_week3",
+  "date_selasa_week3",
+  "menu_selasa_week3",
+  "column_break_xqnv3",
+  "rabu_week3",
+  "date_rabu_week3",
+  "menu_kamis_week3",
+  "column_break_vgsk3",
+  "kamis_week3",
+  "date_kamis_week3",
+  "menu_rabu_week3",
+  "column_break_kjyl3",
+  "jumat_week3",
+  "date_jumat_week3",
+  "menu_jumat_week3",
+  "week_4_section",
+  "senin_week4",
+  "date_senin_week4",
+  "menu_senin_week4",
+  "column_break_fzsa4",
+  "selasa_week4",
+  "date_selasa_week4",
+  "menu_selasa_week4",
+  "column_break_xqnv4",
+  "rabu_week4",
+  "date_rabu_week4",
+  "menu_kamis_week4",
+  "column_break_vgsk4",
+  "kamis_week4",
+  "date_kamis_week4",
+  "menu_rabu_week4",
+  "column_break_kjyl4",
+  "jumat_week4",
+  "date_jumat_week4",
+  "menu_jumat_week4",
+  "week_5_section",
+  "senin_week5",
+  "date_senin_week5",
+  "menu_senin_week5",
+  "column_break_fzsa5",
+  "selasa_week5",
+  "date_selasa_week5",
+  "menu_selasa_week5",
+  "column_break_xqnv5",
+  "rabu_week5",
+  "date_rabu_week5",
+  "menu_kamis_week5",
+  "column_break_vgsk5",
+  "kamis_week5",
+  "date_kamis_week5",
+  "menu_rabu_week5",
+  "column_break_kjyl5",
+  "jumat_week5",
+  "date_jumat_week5",
+  "menu_jumat_week5"
+ ],
+ "fields": [
+  {
+   "fieldname": "nama_lengkap",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nama Lengkap",
+   "reqd": 1
+  },
+  {
+   "default": "Rumah/Lainnya",
+   "fieldname": "sekolah",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sekolah",
+   "options": "Sekolah",
+   "reqd": 1
+  },
+  {
+   "fieldname": "alamat__kelas",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Alamat / Kelas",
+   "reqd": 1
+  },
+  {
+   "fieldname": "no_whatsapp_orang_tua",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "No WhatsApp (Orang Tua)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "week_1_section",
+   "fieldtype": "Section Break",
+   "label": "Week 1"
+  },
+  {
+   "default": "1",
+   "fieldname": "senin_week1",
+   "fieldtype": "Check",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "date_senin_week1",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_senin_week1",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fzsa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "selasa_week1",
+   "fieldtype": "Check",
+   "label": "Selasa"
+  },
+  {
+   "fieldname": "date_selasa_week1",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_selasa_week1",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xqnv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "rabu_week1",
+   "fieldtype": "Check",
+   "label": "Rabu"
+  },
+  {
+   "fieldname": "date_rabu_week1",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_kamis_week1",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgsk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "kamis_week1",
+   "fieldtype": "Check",
+   "label": "Kamis"
+  },
+  {
+   "fieldname": "date_kamis_week1",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_rabu_week1",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kjyl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "jumat_week1",
+   "fieldtype": "Check",
+   "label": "Jumat"
+  },
+  {
+   "fieldname": "date_jumat_week1",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_jumat_week1",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "default": "11",
+   "fieldname": "bulan",
+   "fieldtype": "Select",
+   "label": "Bulan",
+   "options": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
+   "reqd": 1
+  },
+  {
+   "fieldname": "week_2_section",
+   "fieldtype": "Section Break",
+   "label": "Week 2"
+  },
+  {
+   "default": "1",
+   "fieldname": "senin_week2",
+   "fieldtype": "Check",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "date_senin_week2",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_senin_week2",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fzsa2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "selasa_week2",
+   "fieldtype": "Check",
+   "label": "Selasa"
+  },
+  {
+   "fieldname": "date_selasa_week2",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_selasa_week2",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xqnv2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "rabu_week2",
+   "fieldtype": "Check",
+   "label": "Rabu"
+  },
+  {
+   "fieldname": "date_rabu_week2",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_kamis_week2",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgsk2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "kamis_week2",
+   "fieldtype": "Check",
+   "label": "Kamis"
+  },
+  {
+   "fieldname": "date_kamis_week2",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_rabu_week2",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kjyl2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "jumat_week2",
+   "fieldtype": "Check",
+   "label": "Jumat"
+  },
+  {
+   "fieldname": "date_jumat_week2",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_jumat_week2",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "week_3_section",
+   "fieldtype": "Section Break",
+   "label": "Week 3"
+  },
+  {
+   "default": "1",
+   "fieldname": "senin_week3",
+   "fieldtype": "Check",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "date_senin_week3",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_senin_week3",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fzsa3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "selasa_week3",
+   "fieldtype": "Check",
+   "label": "Selasa"
+  },
+  {
+   "fieldname": "date_selasa_week3",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_selasa_week3",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xqnv3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "rabu_week3",
+   "fieldtype": "Check",
+   "label": "Rabu"
+  },
+  {
+   "fieldname": "date_rabu_week3",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_kamis_week3",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgsk3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "kamis_week3",
+   "fieldtype": "Check",
+   "label": "Kamis"
+  },
+  {
+   "fieldname": "date_kamis_week3",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_rabu_week3",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kjyl3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "jumat_week3",
+   "fieldtype": "Check",
+   "label": "Jumat"
+  },
+  {
+   "fieldname": "date_jumat_week3",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_jumat_week3",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "week_4_section",
+   "fieldtype": "Section Break",
+   "label": "Week 4"
+  },
+  {
+   "default": "1",
+   "fieldname": "senin_week4",
+   "fieldtype": "Check",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "date_senin_week4",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_senin_week4",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fzsa4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "selasa_week4",
+   "fieldtype": "Check",
+   "label": "Selasa"
+  },
+  {
+   "fieldname": "date_selasa_week4",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_selasa_week4",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xqnv4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "rabu_week4",
+   "fieldtype": "Check",
+   "label": "Rabu"
+  },
+  {
+   "fieldname": "date_rabu_week4",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_kamis_week4",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgsk4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "kamis_week4",
+   "fieldtype": "Check",
+   "label": "Kamis"
+  },
+  {
+   "fieldname": "date_kamis_week4",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_rabu_week4",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kjyl4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "jumat_week4",
+   "fieldtype": "Check",
+   "label": "Jumat"
+  },
+  {
+   "fieldname": "date_jumat_week4",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_jumat_week4",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "week_5_section",
+   "fieldtype": "Section Break",
+   "label": "Week 5"
+  },
+  {
+   "default": "1",
+   "fieldname": "senin_week5",
+   "fieldtype": "Check",
+   "label": "Senin"
+  },
+  {
+   "fieldname": "date_senin_week5",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_senin_week5",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_fzsa5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "selasa_week5",
+   "fieldtype": "Check",
+   "label": "Selasa"
+  },
+  {
+   "fieldname": "date_selasa_week5",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_selasa_week5",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xqnv5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "rabu_week5",
+   "fieldtype": "Check",
+   "label": "Rabu"
+  },
+  {
+   "fieldname": "date_rabu_week5",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_kamis_week5",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vgsk5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "kamis_week5",
+   "fieldtype": "Check",
+   "label": "Kamis"
+  },
+  {
+   "fieldname": "date_kamis_week5",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_rabu_week5",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kjyl5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "jumat_week5",
+   "fieldtype": "Check",
+   "label": "Jumat"
+  },
+  {
+   "fieldname": "date_jumat_week5",
+   "fieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "menu_jumat_week5",
+   "fieldtype": "Data",
+   "options": "Catering Menu",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_mkxa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "porsi.rate",
+   "fieldname": "rate",
+   "fieldtype": "Data",
+   "label": "Rate / porsi"
+  },
+  {
+   "fieldname": "jumlah",
+   "fieldtype": "Data",
+   "label": "Jumlah"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Data",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Special notes"
+  },
+  {
+   "fieldname": "bukti_transfer",
+   "fieldtype": "Attach",
+   "label": "Bukti transfer"
+  },
+  {
+   "fieldname": "porsi",
+   "fieldtype": "Link",
+   "label": "Porsi",
+   "options": "Porsi Catering",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tahun",
+   "fieldtype": "Data",
+   "label": "Tahun",
+   "options": "2025"
+  },
+  {
+   "fieldname": "alamat_lengkap",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Alamat Lengkap"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-31 21:56:49.166726",
+ "modified_by": "sampahtj@gmail.com",
+ "module": "Catering Management",
+ "name": "Catering Form Monthly",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Catering User",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Catering Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

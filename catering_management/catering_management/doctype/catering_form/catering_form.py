@@ -40,3 +40,4 @@ class CateringForm(Document):
 				summary = f"{porsi}"
 
 			setattr(self, f"summary_{day}", summary)
+

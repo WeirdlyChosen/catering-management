@@ -1,16 +1,18 @@
 frappe.ready(() => {
     console.log("Catering Web Form loaded!");
 
+    // get porsi value
     const porsi = frappe.web_form.get_value("porsi");
-    console.log("Porsi value on load:", porsi);
+    // console.log("Porsi value on load:", porsi);
 
+    // update rate based on porsi
     if (porsi) {
         frappe.call({
             method: "catering_management.catering_management.api.catering_form_monthly_kids.get_rate",
             args: { porsi: porsi },
             callback: function(r) {
                 if (r.message) {
-                    console.log("Rate fetched:", r.message);
+                    // console.log("Rate fetched:", r.message);
                     frappe.web_form.set_value("rate", r.message);
                 } else {
                     console.log("No rate found for porsi:", porsi);
@@ -24,7 +26,7 @@ frappe.ready(() => {
         console.log("No porsi value on load; skipping rate fetch.");
     }
 
-        // Attach event listeners for weekday checkboxes
+    // Attach event listeners for weekday checkboxes
     const weekdays = ["senin", "selasa", "rabu", "kamis", "jumat"];
     const weeks = [1, 2, 3, 4, 5];
 
@@ -71,7 +73,32 @@ frappe.ready(() => {
 });
 
 frappe.ready(async () => {
-    console.log("Catering Web Form (Kids) loaded!");
+    // console.log("Catering Web Form (Kids) loaded!");
+
+    // 🔹 Auto-set bulan & tahun based on current date
+    const today = new Date();
+    let bulan = today.getMonth() + 1; // JS months are 0-based
+    let tahun = today.getFullYear();
+
+    if (today.getDate() > 25) {
+        // Move to next month
+        bulan += 1;
+        if (bulan > 12) {
+            bulan = 1;
+            tahun += 1;
+        }
+    }
+
+    // Set initial values in web form
+    frappe.web_form.set_value("bulan", bulan);
+    frappe.web_form.set_value("tahun", tahun);
+    console.log(`Set bulan - tahun:  ${bulan} - ${tahun}`);
+
+    setTimeout(async () => {
+        await update_week_dates_and_menu();  // populate dates & menus
+        update_amount();                     // recalc amount
+    }, 100);
+
 
     // 🔹 Utility: get all Mondays of a month
     function getMondaysOfMonth(year, month) {
@@ -95,13 +122,13 @@ frappe.ready(async () => {
         const porsi = raw_porsi.includes("Kids") ? "Kids" : "Adult";
 
         if (!bulan || !tahun) {
-            console.log("Bulan or tahun missing, skipping update.");
+            // console.log("Bulan or tahun missing, skipping update.");
             return;
         }
 
         const mondays = getMondaysOfMonth(tahun, bulan);
         if (!mondays.length) {
-            console.log("No Mondays found for this month.");
+            // console.log("No Mondays found for this month.");
             return;
         }
 
@@ -168,7 +195,7 @@ frappe.ready(async () => {
                 "menu_senin_week5", "menu_selasa_week5", "menu_rabu_week5", "menu_kamis_week5", "menu_jumat_week5"
             ];
             week5_fields.forEach(fieldname => frappe.web_form.set_value(fieldname, ""));
-            console.log("Week 5 field values cleared (month has only 4 weeks)");
+            // console.log("Week 5 field values cleared (month has only 4 weeks)");
         }
 
         // STEP 4: Fetch menus for all dates in range

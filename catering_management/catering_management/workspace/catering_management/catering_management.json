@@ -1,0 +1,62 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"Dy-xvFc6Ex\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Catering Management</span>\",\"col\":12}},{\"id\":\"v-_XMPw71T\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Catering Form Monthly\",\"col\":3}},{\"id\":\"wBw6_1gg_0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Porsi Catering\",\"col\":3}},{\"id\":\"qy1cotNRLs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Catering Menu\",\"col\":3}},{\"id\":\"Z8sZZTSa2b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sekolah\",\"col\":3}}]",
+ "creation": "2025-10-31 19:00:22.215076",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "comment",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Catering Management",
+ "links": [],
+ "modified": "2025-11-02 16:50:49.492544",
+ "modified_by": "sampahtj@gmail.com",
+ "module": "Catering Management",
+ "name": "Catering Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 28.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Catering Form Monthly",
+   "link_to": "Catering Form Monthly",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Porsi Catering",
+   "link_to": "Porsi Catering",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Catering Menu",
+   "link_to": "Catering Menu",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Sekolah",
+   "link_to": "Sekolah",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Catering Management"
+}

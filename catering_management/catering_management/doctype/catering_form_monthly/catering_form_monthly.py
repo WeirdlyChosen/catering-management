@@ -6,18 +6,32 @@ from frappe.model.document import Document
 
 
 class CateringFormMonthly(Document):
-    pass
+    def validate(self):
+        # Own fields
+        nama = self.nama_lengkap or ""
+        alamat_kelas = self.alamat__kelas or ""
+        no_whatsapp_orang_tua = self.no_whatsapp_orang_tua or ""
 
+        # Initialize linked school fields
+        sekolah_name = ""
+        sekolah_alamat = ""
 
-# @frappe.whitelist()
-# def get_menu_for_day(porsi, date):
-#     """
-#     Returns the menu for a given date and porsi ('Kids' or 'Adult').
-#     """
-#     menu = frappe.db.get_value("Daily Menu", {"porsi": porsi, "date": date}, "menu")
-#     return menu or ""
+        if self.sekolah:
+            # Fetch linked fields from Sekolah DocType
+            sekolah_doc = frappe.get_doc("Sekolah", self.sekolah)
+            sekolah_name = sekolah_doc.name or ""
+            sekolah_alamat = sekolah_doc.alamat or ""
 
-    # return {"menu": menu_doc or ""}
+        # Concatenate everything into alamat_lengkap
+        # Each part on a new line
+        self.alamat_lengkap = "\n".join(filter(None, [
+            nama,
+            alamat_kelas,
+            sekolah_name,
+            sekolah_alamat,
+            no_whatsapp_orang_tua
+        ]))
+
 
 @frappe.whitelist(allow_guest=True)
 def get_menus_in_range(porsi, date_start, date_end):
@@ -31,7 +45,7 @@ def get_menus_in_range(porsi, date_start, date_end):
         "Catering Menu",
         filters={
             "date": ["between", [start, end]],
-            "menu_group": ["like", f"{porsi}%"]
+            "porsi": ["like", f"{porsi}%"]
         },
         fields=["date", "menu"]
     )

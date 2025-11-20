@@ -5,9 +5,9 @@ from catering_management.catering_management.web_form.catering_form_monthly_kids
 
 
 @frappe.whitelist()
-def get_rate_from_web_form(porsi_name):
+def get_rate_from_web_form(porsi):
     """Proxy to call the web_form get_rate"""
-    return catering_form_monthly_kids.get_rate(porsi_name)
+    return catering_form_monthly_kids.get_rate(porsi)
 
 def get_context(context):
     """

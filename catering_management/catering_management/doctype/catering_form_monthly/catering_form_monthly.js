@@ -13,6 +13,7 @@ frappe.ui.form.on('Catering Form Monthly', {
 
     porsi(frm) {
         update_week_dates_and_menu(frm);
+        update_rate(frm);
     },
 
     refresh(frm) {
@@ -68,6 +69,20 @@ function update_amount(frm) {
     const jumlah = frm.doc.jumlah || 0;
     const rate = frm.doc.rate || 0;
     frm.set_value('amount', jumlah * rate);
+}
+
+function update_rate(frm) {
+    // Example logic — adjust as needed
+    const porsi = frm.doc.porsi || "";
+    let rate = 0;
+
+    if (porsi.includes("Kids")) {
+        rate = 20000;
+    } else if (porsi.includes("Adult")) {
+        rate = 30000;
+    }
+
+    frm.set_value("rate", rate);
 }
 
 function getMondaysOfMonth(year, month) {

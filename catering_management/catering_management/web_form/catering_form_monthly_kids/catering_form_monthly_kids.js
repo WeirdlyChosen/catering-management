@@ -1,4 +1,4 @@
-/** OLD SCRIPT, to be replaced from GPT 
+/** OLD SCRIPT, to be replaced from GPT
 frappe.ready(() => {
     console.log("Catering Web Form loaded!");
 
@@ -238,7 +238,7 @@ frappe.ready(async () => {
                         // 🔹 Update day label dynamically
                 const dayField = `${dayName}_week${week}`;
                 const field = frappe.web_form.get_field(dayField);
-                
+
                 if (field && field.df) {
                     const originalLabel = field.df.original_label || field.df.label;
                     field.df.original_label = originalLabel;  // store original
@@ -262,202 +262,207 @@ frappe.ready(async () => {
 */
 
 frappe.ready(async () => {
-    console.log("✅ Catering Web Form loaded!");
+	console.log("✅ Catering Web Form loaded!");
 
-    const weekdays = ["senin", "selasa", "rabu", "kamis", "jumat"];
-    const weeks = [1, 2, 3, 4, 5];
+	const weekdays = ["senin", "selasa", "rabu", "kamis", "jumat"];
+	const weeks = [1, 2, 3, 4, 5];
 
-    // 🔹 Utility: get all Mondays of a month
-    function getMondaysOfMonth(year, month) {
-        const mondays = [];
-        const date = new Date(year, month - 1, 1);
-        while (date.getDay() !== 1) date.setDate(date.getDate() + 1);
-        while (date.getMonth() === month - 1) {
-            mondays.push(new Date(date));
-            date.setDate(date.getDate() + 7);
-        }
-        return mondays;
-    }
+	// 🔹 Utility: get all Mondays of a month
+	function getMondaysOfMonth(year, month) {
+		const mondays = [];
+		const date = new Date(year, month - 1, 1);
+		while (date.getDay() !== 1) date.setDate(date.getDate() + 1);
+		while (date.getMonth() === month - 1) {
+			mondays.push(new Date(date));
+			date.setDate(date.getDate() + 7);
+		}
+		return mondays;
+	}
 
-    function update_amount() {
-        const jumlah = frappe.web_form.get_value("jumlah") || 0;
-        const rate = frappe.web_form.get_value("rate") || 0;
-        frappe.web_form.set_value("amount", jumlah * rate);
-    }
+	function update_amount() {
+		const jumlah = frappe.web_form.get_value("jumlah") || 0;
+		const rate = frappe.web_form.get_value("rate") || 0;
+		frappe.web_form.set_value("amount", jumlah * rate);
+	}
 
-    function update_total_check() {
-        let total = 0;
-        weekdays.forEach(day => {
-            weeks.forEach(week => {
-                if (frappe.web_form.get_value(`${day}_week${week}`)) total++;
-            });
-        });
-        frappe.web_form.set_value("jumlah", total);
-        update_amount();
-    }
+	function update_total_check() {
+		let total = 0;
+		weekdays.forEach((day) => {
+			weeks.forEach((week) => {
+				if (frappe.web_form.get_value(`${day}_week${week}`)) total++;
+			});
+		});
+		frappe.web_form.set_value("jumlah", total);
+		update_amount();
+	}
 
-    async function update_rate() {
-        const porsi = frappe.web_form.get_value("porsi");
-        if (!porsi) return;
+	async function update_rate() {
+		const porsi = frappe.web_form.get_value("porsi");
+		if (!porsi) return;
 
-        try {
-            const res = await frappe.call({
-                method: "catering_management.catering_management.api.catering_form_monthly_kids.get_rate",
-                args: { porsi },
-            });
-            if (res.message) {
-                frappe.web_form.set_value("rate", res.message);
-                update_amount();
-            }
-        } catch (e) {
-            console.error("❌ Error fetching rate:", e);
-        }
-    }
+		try {
+			const res = await frappe.call({
+				method: "catering_management.catering_management.api.catering_form_monthly_kids.get_rate",
+				args: { porsi },
+			});
+			if (res.message) {
+				frappe.web_form.set_value("rate", res.message);
+				update_amount();
+			}
+		} catch (e) {
+			console.error("❌ Error fetching rate:", e);
+		}
+	}
 
+	async function update_week_dates_and_menu() {
+		const bulan = frappe.web_form.get_value("bulan");
+		const tahun = frappe.web_form.get_value("tahun");
+		const raw_porsi = frappe.web_form.get_value("porsi") || "";
+		const porsi = raw_porsi.includes("Kids") ? "Kids" : "Adult";
 
-    async function update_week_dates_and_menu() {
-        const bulan = frappe.web_form.get_value("bulan");
-        const tahun = frappe.web_form.get_value("tahun");
-        const raw_porsi = frappe.web_form.get_value("porsi") || "";
-        const porsi = raw_porsi.includes("Kids") ? "Kids" : "Adult";
+		if (!bulan || !tahun) return;
 
-        if (!bulan || !tahun) return;
+		const mondays = getMondaysOfMonth(tahun, bulan);
+		if (!mondays.length) return;
 
-        const mondays = getMondaysOfMonth(tahun, bulan);
-        if (!mondays.length) return;
+		// Clear date & menu fields
+		for (let i = 1; i <= 5; i++) {
+			weekdays.forEach((day) => {
+				const dateField = `date_${day}_week${i}`;
+				const menuField = `menu_${day}_week${i}`;
+				frappe.web_form.set_value(dateField, "");
+				try {
+					frappe.web_form.set_value(menuField, "");
+				} catch (e) {
+					console.warn(`Skip clear for ${menuField}:`, e.message);
+				}
+			});
+		}
 
-        // Clear date & menu fields
-        for (let i = 1; i <= 5; i++) {
-            weekdays.forEach(day => {
-                const dateField = `date_${day}_week${i}`;
-                const menuField = `menu_${day}_week${i}`;
-                frappe.web_form.set_value(dateField, "");
-                try {
-                    frappe.web_form.set_value(menuField, "");
-                } catch (e) {
-                    console.warn(`Skip clear for ${menuField}:`, e.message);
-                }
-            });
-        }
+		// Fill dates
+		for (let i = 0; i < 5; i++) {
+			const monday = mondays[i];
+			if (!monday) continue;
+			const week = i + 1;
+			for (let d = 0; d < 5; d++) {
+				const date = new Date(monday);
+				date.setDate(date.getDate() + d);
+				if (i === 4 && date.getMonth() + 1 > bulan) continue;
+				frappe.web_form.set_value(
+					`date_${weekdays[d]}_week${week}`,
+					frappe.datetime.obj_to_str(date)
+				);
+			}
+		}
 
-        // Fill dates
-        for (let i = 0; i < 5; i++) {
-            const monday = mondays[i];
-            if (!monday) continue;
-            const week = i + 1;
-            for (let d = 0; d < 5; d++) {
-                const date = new Date(monday);
-                date.setDate(date.getDate() + d);
-                if (i === 4 && date.getMonth() + 1 > bulan) continue;
-                frappe.web_form.set_value(
-                    `date_${weekdays[d]}_week${week}`,
-                    frappe.datetime.obj_to_str(date)
-                );
-            }
-        }
+		// Week 5 visibility
+		const hasWeek5 = mondays.length >= 5 && mondays[4].getMonth() + 1 === parseInt(bulan);
+		const sectionWrapper = document.querySelector('[data-fieldname="week_5_section"]');
+		if (sectionWrapper) sectionWrapper.style.display = hasWeek5 ? "" : "none";
 
-        // Week 5 visibility
-        const hasWeek5 = mondays.length >= 5 && mondays[4].getMonth() + 1 === parseInt(bulan);
-        const sectionWrapper = document.querySelector('[data-fieldname="week_5_section"]');
-        if (sectionWrapper) sectionWrapper.style.display = hasWeek5 ? "" : "none";
+		if (!hasWeek5) {
+			weeks.slice(4).forEach(() => {
+				weekdays.forEach((day) => {
+					frappe.web_form.set_value(`${day}_week5`, "");
+					frappe.web_form.set_value(`menu_${day}_week5`, "");
+					frappe.web_form.set_value(`date_${day}_week5`, "");
+				});
+			});
+		}
 
-        if (!hasWeek5) {
-            weeks.slice(4).forEach(() => {
-                weekdays.forEach(day => {
-                    frappe.web_form.set_value(`${day}_week5`, "");
-                    frappe.web_form.set_value(`menu_${day}_week5`, "");
-                    frappe.web_form.set_value(`date_${day}_week5`, "");
-                });
-            });
-        }
+		// Fetch menus
+		const firstMonday = mondays[0];
+		const lastFriday = new Date(mondays[mondays.length - 1]);
+		lastFriday.setDate(lastFriday.getDate() + 4);
 
-        // Fetch menus
-        const firstMonday = mondays[0];
-        const lastFriday = new Date(mondays[mondays.length - 1]);
-        lastFriday.setDate(lastFriday.getDate() + 4);
+		let allMenus = {};
+		try {
+			const res = await frappe.call({
+				method: "catering_management.catering_management.doctype.catering_form_monthly.catering_form_monthly.get_menus_in_range",
+				args: {
+					porsi,
+					date_start: frappe.datetime.obj_to_str(firstMonday),
+					date_end: frappe.datetime.obj_to_str(lastFriday),
+				},
+			});
+			allMenus = res.message || {};
+		} catch (e) {
+			console.error("❌ Menu fetch failed:", e);
+		}
 
-        let allMenus = {};
-        try {
-            const res = await frappe.call({
-                method: "catering_management.catering_management.doctype.catering_form_monthly.catering_form_monthly.get_menus_in_range",
-                args: {
-                    porsi,
-                    date_start: frappe.datetime.obj_to_str(firstMonday),
-                    date_end: frappe.datetime.obj_to_str(lastFriday)
-                }
-            });
-            allMenus = res.message || {};
-        } catch (e) {
-            console.error("❌ Menu fetch failed:", e);
-        }
+		// Fill menus & update labels
+		for (let i = 0; i < 5; i++) {
+			const week = i + 1;
+			for (let d = 0; d < 5; d++) {
+				const dayName = weekdays[d];
+				const dateStr = frappe.web_form.get_value(`date_${dayName}_week${week}`);
+				if (!dateStr) continue;
+				const menu = allMenus[dateStr] || "";
+				frappe.web_form.set_value(`menu_${dayName}_week${week}`, menu);
 
-        // Fill menus & update labels
-        for (let i = 0; i < 5; i++) {
-            const week = i + 1;
-            for (let d = 0; d < 5; d++) {
-                const dayName = weekdays[d];
-                const dateStr = frappe.web_form.get_value(`date_${dayName}_week${week}`);
-                if (!dateStr) continue;
-                const menu = allMenus[dateStr] || "";
-                frappe.web_form.set_value(`menu_${dayName}_week${week}`, menu);
+				// Auto-uncheck checkbox if menu is empty
+				const checkboxField = `${dayName}_week${week}`;
+				if (!menu) {
+					frappe.web_form.set_value(checkboxField, 0);
+				}
 
-                const field = frappe.web_form.get_field(`${dayName}_week${week}`);
-                if (field && field.df) {
-                    const orig = field.df.original_label || field.df.label;
-                    field.df.original_label = orig;
-                    field.set_label(menu ? `${orig} - ${menu}` : orig);
-                }
-            }
-        }
-    }
+				const field = frappe.web_form.get_field(`${dayName}_week${week}`);
+				if (field && field.df) {
+					const orig = field.df.original_label || field.df.label;
+					field.df.original_label = orig;
+					field.set_label(menu ? `${orig} - ${menu}` : orig);
+				}
+			}
+		}
+	}
 
-    // Set bulan & tahun automatically
-    const today = new Date();
-    let bulan = today.getMonth() + 1;
-    let tahun = today.getFullYear();
-    if (today.getDate() > 25) {
-        bulan++;
-        if (bulan > 12) {
-            bulan = 1;
-            tahun++;
-        }
-    }
-    frappe.web_form.set_value("bulan", bulan);
-    frappe.web_form.set_value("tahun", tahun);
+	// Set bulan & tahun automatically
+	const today = new Date();
+	let bulan = today.getMonth() + 1;
+	let tahun = today.getFullYear();
+	if (today.getDate() > 25) {
+		bulan++;
+		if (bulan > 12) {
+			bulan = 1;
+			tahun++;
+		}
+	}
+	frappe.web_form.set_value("bulan", bulan);
+	frappe.web_form.set_value("tahun", tahun);
 
-    // Fetch rate on load
-    const porsi = frappe.web_form.get_value("porsi");
-    if (porsi) {
-        try {
-            const res = await frappe.call({
-                method: "catering_management.catering_management.api.catering_form_monthly_kids.get_rate",
-                args: { porsi }
-            });
-            if (res.message) frappe.web_form.set_value("rate", res.message);
-        } catch (e) {
-            console.error("Rate fetch failed:", e);
-        }
-    }
+	// Fetch rate on load
+	const porsi = frappe.web_form.get_value("porsi");
+	if (porsi) {
+		try {
+			const res = await frappe.call({
+				method: "catering_management.catering_management.api.catering_form_monthly_kids.get_rate",
+				args: { porsi },
+			});
+			if (res.message) frappe.web_form.set_value("rate", res.message);
+		} catch (e) {
+			console.error("Rate fetch failed:", e);
+		}
+	}
 
-    // Event bindings
-    weekdays.forEach(day => {
-        weeks.forEach(week => {
-            frappe.web_form.on(`${day}_week${week}`, update_total_check);
-        });
-    });
-    frappe.web_form.on("rate", update_amount);
-    frappe.web_form.on("jumlah", update_amount);
-    frappe.web_form.on("bulan", update_week_dates_and_menu);
-    frappe.web_form.on("tahun", update_week_dates_and_menu);
-    frappe.web_form.on("porsi", async () => {
-        await update_rate();
-        await update_week_dates_and_menu();
-    });
+	// Event bindings
+	weekdays.forEach((day) => {
+		weeks.forEach((week) => {
+			frappe.web_form.on(`${day}_week${week}`, update_total_check);
+		});
+	});
+	frappe.web_form.on("rate", update_amount);
+	frappe.web_form.on("jumlah", update_amount);
+	frappe.web_form.on("bulan", update_week_dates_and_menu);
+	frappe.web_form.on("tahun", update_week_dates_and_menu);
+	frappe.web_form.on("porsi", async () => {
+		await update_rate();
+		await update_week_dates_and_menu();
+	});
 
-    // Initialize
-    setTimeout(async () => {
-        await update_rate();
-        await update_week_dates_and_menu();
-        update_total_check();
-    }, 400);
+	// Initialize
+	setTimeout(async () => {
+		await update_rate();
+		await update_week_dates_and_menu();
+		update_total_check();
+	}, 400);
 });

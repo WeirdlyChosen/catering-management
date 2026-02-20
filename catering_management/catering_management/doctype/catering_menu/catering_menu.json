@@ -8,7 +8,9 @@
  "field_order": [
   "date",
   "menu",
-  "porsi"
+  "porsi",
+  "section_break_jypz",
+  "route"
  ],
  "fields": [
   {
@@ -32,13 +34,24 @@
    "label": "Menu Group",
    "options": "Kids\nAdult",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_jypz",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "route"
   }
  ],
  "grid_page_length": 50,
+ "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-11-02 17:24:38.227389",
- "modified_by": "sampahtj@gmail.com",
+ "modified": "2026-01-02 16:02:25.840186",
+ "modified_by": "Administrator",
  "module": "Catering Management",
  "name": "Catering Menu",
  "naming_rule": "Expression",
@@ -90,6 +103,7 @@
    "write": 1
   }
  ],
+ "route": "menu",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "modified",
